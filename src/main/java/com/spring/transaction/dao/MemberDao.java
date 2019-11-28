@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -28,11 +29,27 @@ public class MemberDao {
                 Member member = new Member();
                 member.setName(rs.getString("name"));
                 member.setId(rs.getLong("id"));
-                member.setAddr(rs.getString("addr"));
+                member.setAddr(rs.getString("address"));
                 member.setAge(rs.getInt("age"));
                 return member;
             }
         });
+
+        //另一种写法
+//        List<Member> result = new ArrayList<>();
+//        template.query(sql, new RowMapper<Object>() {
+//            @Override
+//            public Object mapRow(ResultSet rs, int i) throws SQLException {
+//                Member member = new Member();
+//                member.setName(rs.getString("name"));
+//                member.setId(rs.getLong("id"));
+//                member.setAddr(rs.getString("address"));
+//                member.setAge(rs.getInt("age"));
+//                result.add(member);
+//                return member;
+//            }
+//        });
+//        return result;
     }
 
     public boolean insert(Member m) throws Exception {

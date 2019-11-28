@@ -77,7 +77,7 @@ public class JdbcTest {
                     Field field = entityClass.getDeclaredField(mapper.get(columnName));
                     ///可能是私有属性
                     field.setAccessible(true);
-                    ///instance这个对象参数可以直接用本方法的入参condition
+                    ///instance这个对象参数可以直接用本方法的入参condition吗？？？
                     field.set(instance, rs.getObject(columnName));
                 }
                 result.add(instance);
