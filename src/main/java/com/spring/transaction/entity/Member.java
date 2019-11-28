@@ -2,6 +2,7 @@ package com.spring.transaction.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,6 +18,7 @@ public class Member implements Serializable {
 
     private String name;
 
+    @Column(name="address")
     private String addr;
 
     private Integer age;
