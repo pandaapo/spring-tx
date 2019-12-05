@@ -14,6 +14,7 @@ public class MemberDao_myOrm extends BaseDaoSupport<Member, Long> {
         return "id";
     }
 
+    //固定数据源
     @Resource(name="dataSource")
     @Override
     protected void setDataSource(DataSource dataSource) {

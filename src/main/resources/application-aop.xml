@@ -9,8 +9,9 @@
 						http://www.springframework.org/schema/aop 
 						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
-	
+
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!--？？？数据源的配置是动态配置，这里ref="dataSource"是不是有问题？？？-->
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 

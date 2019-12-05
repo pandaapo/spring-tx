@@ -22,6 +22,7 @@ public class OrderDao extends BaseDaoSupport<Order, Long> {
         return "id";
     }
 
+    //动态数据源
     @Resource(name = "dynamicDataSource")
     @Override
     protected void setDataSource(DataSource dataSource) {
