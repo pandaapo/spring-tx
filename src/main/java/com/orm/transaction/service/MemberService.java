@@ -1,7 +1,7 @@
-package com.spring.transaction.service;
+package com.orm.transaction.service;
 
-import com.spring.transaction.dao.MemberDao;
-import com.spring.transaction.entity.Member;
+import com.orm.transaction.dao.MemberDao;
+import com.orm.transaction.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

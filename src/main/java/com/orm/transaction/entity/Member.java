@@ -1,4 +1,4 @@
-package com.spring.transaction.entity;
+package com.orm.transaction.entity;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.spring.orm;
+package com.orm.orm;
 
-import com.spring.transaction.entity.Member;
+import com.orm.transaction.entity.Member;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -27,7 +27,7 @@ public class JdbcTest {
             //1、加载驱动类
             Class.forName("com.mysql.jdbc.Driver");
             //2、建立连接
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/spring-tx?characterEncoding=UTF-8&rewriteBatchedStatements=true&&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/orm-tx?characterEncoding=UTF-8&rewriteBatchedStatements=true&&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC", "root", "123456");
 
             ///优化思路：（1）通过实体类属性的@Column注解将属性名和数据库表的字段名对应起来。通过反射机制可以拿到实体类的所有字段。（2）sql中的表名通过实体类的@Table注解名获取。（3）给sql自动拼上查询条件。
             Field[] fields = entityClass.getDeclaredFields();
@@ -103,4 +103,89 @@ public class JdbcTest {
         }
         return result;
     }
+
+//    private static List<Member> select(String sql) {
+//        List<Member> result = new ArrayList<>();
+//        Connection con = null;
+//        PreparedStatement pstm = null;
+//        ResultSet rs = null;
+//        try {
+//            //1、加载驱动类
+//            Class.forName("com.mysql.jdbc.Driver");
+//            //2、建立连接
+//            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gp-vip-spring-db-demo","root","123456");
+//            //3、创建语句集
+//            pstm =  con.prepareStatement(sql);
+//            //4、执行语句集
+//            rs = pstm.executeQuery();
+//            while (rs.next()){
+//                Member instance = new Member();
+//                instance.setId(rs.getLong("id"));
+//                instance.setName(rs.getString("name"));
+//                instance.setAge(rs.getInt("age"));
+//                instance.setAddr(rs.getString("addr"));
+//                result.add(instance);
+//            }
+//            //5、获取结果集
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        //6、关闭结果集、关闭语句集、关闭连接
+//        finally {
+//            try {
+//                rs.close();
+//                pstm.close();
+//                con.close();
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//        return result;
+//    }
+
+
+
+//    private static List<Member> select(String sql) {
+//        List<Member> result = new ArrayList<>();
+//        Connection con = null;
+//        PreparedStatement pstm = null;
+//        ResultSet rs = null;
+//        try {
+//            //1、加载驱动类
+//            Class.forName("com.mysql.jdbc.Driver");
+//            //2、建立连接
+//            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gp-vip-spring-db-demo","root","123456");
+//            //3、创建语句集
+//            pstm =  con.prepareStatement(sql);
+//            //4、执行语句集
+//            rs = pstm.executeQuery();
+//            while (rs.next()){
+//                Member instance = mapperRow(rs,rs.getRow());
+//                result.add(instance);
+//            }
+//            //5、获取结果集
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        //6、关闭结果集、关闭语句集、关闭连接
+//        finally {
+//            try {
+//                rs.close();
+//                pstm.close();
+//                con.close();
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//        return result;
+//    }
+//
+//    private static Member mapperRow(ResultSet rs, int i) throws Exception {
+//        Member instance = new Member();
+//        instance.setId(rs.getLong("id"));
+//        instance.setName(rs.getString("name"));
+//        instance.setAge(rs.getInt("age"));
+//        instance.setAddr(rs.getString("addr"));
+//        return instance;
+//    }
 }

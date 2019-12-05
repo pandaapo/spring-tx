@@ -26,10 +26,29 @@
 	</bean>
 
 	<bean id="dataSource" parent="datasourcePool">
-		<property name="driverClassName" value="${mysql.jdbc.driverClassName}" />
-		<property name="url" value="${mysql.jdbc.url}" />
-		<property name="username" value="${mysql.jdbc.username}" />
-		<property name="password" value="${mysql.jdbc.password}" />
+		<property name="driverClassName" value="${db2019.mysql.jdbc.driverClassName}" />
+		<property name="url" value="${db2019.mysql.jdbc.url}" />
+		<property name="username" value="${mdb2019.ysql.jdbc.username}" />
+		<property name="password" value="${db2019.mysql.jdbc.password}" />
+	</bean>
+
+	<bean id="dataSource2018" parent="datasourcePool">
+		<property name="driverClassName" value="${db2018.mysql.jdbc.driverClassName}" />
+		<property name="url" value="${db2018.mysql.jdbc.url}" />
+		<property name="username" value="${db2018.mysql.jdbc.username}" />
+		<property name="password" value="${db2018.mysql.jdbc.password}" />
+	</bean>
+
+	<bean id="dynamicDataSourceEntry" class="javax.core.common.jdbc.datasource.DynamicDataSourceEntry" />
+	<bean id="dynamicDataSource" class="javax.core.common.jdbc.datasource.DynamicDataSource">
+		<property name="dataSourceEntry" ref="dynamicDataSourceEntry"></property>
+		<property name="targetDataSources">
+			<map>
+				<entry key="DB_2019" value-ref="dataSource"></entry>
+				<entry key="DB_2018" value-ref="dataSource2018"></entry>
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSource"></property>
 	</bean>
 
 </beans>

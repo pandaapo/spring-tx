@@ -1,6 +1,6 @@
-package com.spring.transaction.dao;
+package com.orm.transaction.dao;
 
-import com.spring.transaction.entity.Member;
+import com.orm.transaction.entity.Member;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -22,6 +21,7 @@ public class MemberDao {
     }
 
     public List<Member> selectAll() throws Exception {
+        //对以下这段Spring JDBC需要我们手动写的代码做一些封装和开发，开始自己的ORM。
         String sql = "select * from t_member";
         return template.query(sql, new RowMapper<Member>() {
             @Override

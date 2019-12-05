@@ -7,7 +7,9 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
 	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!--扫描相关的类的基础包-->
  	<context:component-scan base-package="com"/>
+	<!--如果要自动扫描Annotation-->
 	<context:annotation-config />
 
 	<!--为了在.xml中引入外部文件，引入外部文件后，就可以在xml中用${key}替换指定的properties文件中的值。（application-db.xml）-->
